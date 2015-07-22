@@ -1,6 +1,11 @@
-## The two functions below (makeCacheMatrix and cacheSolve 
-##	cache the inverse of a matrix  for future use. 
-##It is assumed that the input matrix is invertible.
+## The two functions below (makeCacheMatrix and cacheSolve) 
+## calculate and cache the inverse of a matrix  for future use. 
+## It is assumed that the input matrix is invertible. The process
+## is performed in two steps, represented by the two functions.
+## The first step, makeCacheMatrix turns a matrix into a special
+## object that can store its inverse. The second step, cacheSolve
+## either retrieves a preexisting cached inverse or calculates it
+## and caches it.
 
 ## The function makeCaheMatrix takes as an input a matrix
 ## and returns a list of 4 other functions:
@@ -52,7 +57,7 @@ cacheSolve <- function(flist, ...) {
     }
     ## If the inverse does not exist, we calculate it and cache it
     mat <- flist$get()
-    inv <- solve
+    inv <- solve(mat)
     flist$setmean(inv)
     inv
 }
